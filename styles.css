@@ -1,0 +1,62 @@
+
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+  }
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right,#0b20e6, #00FF6C); /*Burada doğrusal bir gradiyan uygula diyoruz.Sağa dogru uygula 
+    diyoruz böylelikle ilk rengimiz sol taraftaki olmuş odlu.*/
+}
+
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows:minmax(120px,auto) repeat(5,100px);/*Burada sonuç arttıkca ekranın büyümesi için minimum 120px, 
+    max ise auto yaptık.Sonrasında her karanın 100px çarpı 5 olmasını istedik .Tambir kare olması için*/
+
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+  }
+.calculator-grid > button:hover { /*hover diyerek bu butonun sütüne gelindiğinde olucak işlemi belirtmiş oluyoruz.*/
+    background-color: rgba(255, 255, 255, .9); /*buton üstüne gelindiğinde opağının değişmesi için .9 yaptık*/
+  }
+  
+  .span-two {
+    grid-column: span 2; /*bu sınıfı kullanan sütunun 2 sutuna yayılmasını istedik.*/
+  }
+  
+  .output {
+    grid-column: 1 / -1; /*1 nuamralı sutundan son sutuna kadar git diyoruz.*/
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;/*hesaplama ekranında yazılar arasında yazıların sınırları arasında boşluk olsun*/
+    flex-direction: column; /*sağa sütun olrak hızalansın*/
+    padding: 10px; /*mesafe boşluk*/
+    word-wrap: break-word;
+    word-break: break-all; /*satırı alt satıra geçirtir ve bütür*/
+  }
+  
+  .output .previous-operand {
+    color: rgba(255, 255, 255, .75); /*Sonuclar ekranındaki yazıların renk ayarı*/
+    font-size: 1.5rem; /*yazı boyutu*//*Bu sınıf işlem yapmak için kullandığımzı satırı gösteren textin font ayaları için */
+  }
+  
+  .output .current-operand {
+    color: white; /*Sonuc textinin fontunu tam beyaz olarak yaptık */
+    font-size: 2.5rem;
+  }
