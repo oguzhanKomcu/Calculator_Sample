@@ -1,57 +1,11 @@
 
-    const numberButtons = document.querySelectorAll('[data-number]') // herhangi bu nitelik ile belirtilmiş olan sayılar
-    const operationButtons = document.querySelectorAll('[data-operation]') //Çarpma, toplama gibi operasyon butonaları
-    const equalsButtons = document.querySelector('[data-equals]') //  "=" eşittir butonunu yakaldık
-    const deleteButton = document.querySelector('[data-delegete]')
-    const allButtons = document.querySelector('[data-all-clear]')
-    const previousOperandTextElement = document.querySelector('[data-previous-operand]')
-    const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
-    var calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
-
-    //tüm numberların içinde gezicek.Eğerki birinde click eventi olursa bu donksiyon çalışsacak.Calculator sınıfındaki
-    // appendNumber fonskiyonu devreye giricek içinede click olan butonun texti verilecek.Bunuda this.currentOperand ' a
-    // atanıcak . Sonrasındada çalışan update donksiyonu atanmış olan yeni this.currentOperand'ı texte yazıcak
-    numberButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          calculator.appendNumber(button.innerText)
-          calculator.updateDisplay()
-        })
-      })
-      
-
-      operationButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          calculator.chooseOperation(button.innerText)
-          calculator.updateDisplay()
-        })
-      })
-      
-      equalsButton.addEventListener('click', button => {
-        calculator.compute()
-        calculator.updateDisplay()
-      })
-      
-      allClearButton.addEventListener('click', button => {
-        calculator.clear()
-        calculator.updateDisplay()
-      })
-      
-      deleteButton.addEventListener('click', button => {
-        calculator.delete()
-        calculator.updateDisplay()
-      })
-
-    //Şimdi hesapmakinemiz için bir sınıf tanımlıyoruz
-
- class Calculator{
-
-    constructor(previousOperandTextElement,currentOperandTextElement){
-        this.previousOperandTextElement=previousOperandTextElement
-        this.currentOperandTextElement.currentOperandTextElement
-        this.clear();
+class Calculator {
+    constructor(previousOperandTextElement, currentOperandTextElement) {
+      this.previousOperandTextElement = previousOperandTextElement
+      this.currentOperandTextElement = currentOperandTextElement
+      this.clear()
     }
-
 
     clear(){
 
@@ -67,12 +21,10 @@
 
     }
 
-    appendNumber(number)//istenilen numarayı ekrana basar
-   {
-      if(number === '.' && this.currentOperand.inculude('.')) return  //Birden fazla nokta eklenmemesi için bir sorgu
-    this.currentOperand  = this.currentOperand.toString() + number.toString() ///sürekli yazan sayının yanına yenisini ekleyebilsin diye
-    
-   }
+   appendNumber(number) {
+    if (number === '.' && this.currentOperand.includes('.')) return  //Birden fazla nokta eklenmemesi için bir sorgu
+    this.currentOperand = this.currentOperand.toString() + number.toString() ///sürekli yazan sayının yanına yenisini ekleyebilsin diye
+  } 
 
    chooseOperation(operation){
     if(this.currentOperand === '') return
@@ -152,3 +104,48 @@
 
 
  }
+    const numberButtons = document.querySelectorAll('[data-number]') // herhangi bu nitelik ile belirtilmiş olan sayılar
+    const operationButtons = document.querySelectorAll('[data-operation]') //Çarpma, toplama gibi operasyon butonaları
+    const equalsButtons = document.querySelector('[data-equals]') //  "=" eşittir butonunu yakaldık
+    const deleteButton = document.querySelector('[data-delegete]')
+    const allButtons = document.querySelector('[data-all-clear]')
+    const previousOperandTextElement = document.querySelector('[data-previous-operand]')
+    const currentOperandTextElement = document.querySelector('[data-current-operand]')
+
+    var calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+    //tüm numberların içinde gezicek.Eğerki birinde click eventi olursa bu donksiyon çalışsacak.Calculator sınıfındaki
+    // appendNumber fonskiyonu devreye giricek içinede click olan butonun texti verilecek.Bunuda this.currentOperand ' a
+    // atanıcak . Sonrasındada çalışan update donksiyonu atanmış olan yeni this.currentOperand'ı texte yazıcak
+    numberButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          calculator.appendNumber(button.innerText)
+          calculator.updateDisplay()
+        })
+      })
+      
+
+      operationButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          calculator.chooseOperation(button.innerText)
+          calculator.updateDisplay()
+        })
+      })
+      
+      equalsButton.addEventListener('click', button => {
+        calculator.compute()
+        calculator.updateDisplay()
+      })
+      
+      allClearButton.addEventListener('click', button => {
+        calculator.clear()
+        calculator.updateDisplay()
+      })
+      
+      deleteButton.addEventListener('click', button => {
+        calculator.delete()
+        calculator.updateDisplay()
+      })
+
+    //Şimdi hesapmakinemiz için bir sınıf tanımlıyoruz
+
